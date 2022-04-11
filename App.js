@@ -14,14 +14,11 @@ const App = () => {
 
 
   const handleAddNotes = () => {
-    setMyNotes([...myNotes, { key: Math.random(), noteTitle: note, description: ' lorem lorem lorem lorem lorem' }])
-    // myNotes.push({ key: Math.random() * 10, note })
+    setMyNotes([...myNotes, { key: Math.random(), noteTitle: note, description: 'lorem lorem lorem lorem lorem' }])
 
   }
   const handleDeleteNotes = (key) => {
     setMyNotes(prev => prev.filter(note => note.key !== key))
-
-
   }
   return (
     <View style={styles.body}>
@@ -44,8 +41,8 @@ const App = () => {
         <FlatList data={myNotes}
           renderItem={({ item }) => ((
             <>
-              {myNotes.length === 0 ?
-                <View style={{ margin: 20 }}><Text>No Notes to Show</Text></View> :
+              {myNotes.length === 1 ?
+                <View style={{ alignItems: 'center' }}><Text >No Notes to Show</Text></View> :
                 <View style={styles.noteStyle}>
                   <Text style={styles.deleteIcon} onPress={() => handleDeleteNotes(item.key)}>X</Text>
                   <Text style={{ fontSize: 20, color: 'gray' }}>{item.noteTitle + item.description}</Text>
